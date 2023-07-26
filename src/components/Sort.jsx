@@ -1,7 +1,7 @@
 function Sort() {
   return (
     <div className="nav__sort active">
-      <img src="./build/img/arrow.svg" alt="^-^" />
+      <img src="assets/arrow.svg" alt="^-^" />
       <p>
         Sort by <span>popularity</span>
       </p>

@@ -98,25 +98,24 @@ body {
       padding: 0;
 
       li {
-        margin-right: 15px;
+        margin: 5px;
+        margin-right: 10px;
+        padding: 10px 25px;
+        color: black;
+        display: block;
+        background-color: #f9f9f9;
+        border-radius: 30px;
+        cursor: pointer;
+        user-select: none;
+      }
 
-        a {
-          text-decoration: none;
-          color: black;
-          display: block;
-          background-color: #f9f9f9;
-          border-radius: 30px;
-          padding: 10px 25px;
-        }
+      .active {
+        color: white;
+        background-color: #282828;
+      }
 
-        .active {
-          color: white;
-          background-color: #282828;
-        }
-
-        &:last-child {
-          margin-right: 0;
-        }
+      &:last-child {
+        margin-right: 0;
       }
     }
 
@@ -176,13 +175,14 @@ body {
 
     .pizza {
       display: flex;
-      justify-content: space-between;
       flex-wrap: wrap;
       padding: 0 5%;
     }
 
     .pizza__item {
-      width: 23%;
+      width: 25%;
+      padding: 0 2%;
+      box-sizing: border-box;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -191,6 +191,7 @@ body {
 
       .pizza__img {
         width: 90%;
+        user-select: none;
       }
 
       .pizza__header {
@@ -215,6 +216,7 @@ body {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        user-select: none;
 
         .kind {
           display: flex;
@@ -284,6 +286,7 @@ body {
           display: flex;
           align-items: center;
           background-color: #fe5f1e;
+          border: 1px solid #fe5f1e;
           border-radius: 30px;
           padding: 10px 30px;
           cursor: pointer;
@@ -296,6 +299,7 @@ body {
             display: flex;
             justify-content: center;
             align-items: center;
+            padding: 2px;
           }
 
           svg {
@@ -306,6 +310,10 @@ body {
         .active-btn {
           background-color: white;
           border: 1px solid #fe5f1e;
+
+          path {
+            fill: #fe5f1e;
+          }
 
           p {
             color: #fe5f1e;
@@ -324,6 +332,8 @@ body {
             display: flex;
             justify-content: center;
             align-items: center;
+            font-weight: bold;
+            padding: 2px;
           }
         }
       }
@@ -509,11 +519,8 @@ body {
   }
 
   body .wrapper .pizza {
-    flex-wrap: wrap;
-    justify-content: space-around;
-
     .pizza__item {
-      width: 31%;
+      width: 33.33%;
     }
   }
 
@@ -531,7 +538,8 @@ body {
 
 @media (max-width: 970px) {
   body .wrapper .pizza .pizza__item {
-    width: 45%;
+    width: 50%;
+    padding: 0 4%;
   }
 }
 
@@ -616,21 +624,31 @@ body {
   body {
     .wrapper {
       .pizza .pizza__item {
-        width: 85%;
-        margin: 50px 0;
+        width: 90%;
+        margin: 50px auto;
+
+        .kind-section {
+          height: auto;
+          .kind,
+          .size {
+            margin-bottom: 10px;
+            padding: 5px;
+            div {
+              padding: 5px 10px;
+            }
+          }
+        }
 
         .price-section .btn {
           margin-top: 20px;
           display: flex;
           justify-content: center;
           padding: 15px 20px;
-          width: 30%;
+          width: 100%;
         }
       }
 
       .pizza__item .price-section {
-        flex-wrap: wrap;
-        justify-content: space-around;
         flex-direction: column;
 
         .pizza-price {

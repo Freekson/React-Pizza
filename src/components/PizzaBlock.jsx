@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 
-export default function PizzaBlock({ title, price }) {
+export default function PizzaBlock({ title, price, imageUrl, sizes, types }) {
+  const pizzaTypes = ["thin", "traditional"];
+
   const [pizzaCount, setPizzaCount] = useState(0);
+  const [activeType, setActiveType] = useState(0);
+  const [activeSize, setActiveSize] = useState(0);
 
   const onClickAdd = () => {
     setPizzaCount(pizzaCount + 1);
@@ -9,22 +13,46 @@ export default function PizzaBlock({ title, price }) {
 
   return (
     <div className="pizza__item">
-      <img src="./build/img/pizza-1.png" alt="pizza" className="pizza__img" />
+      <img src={imageUrl} alt="pizza" className="pizza__img" />
       <p className="pizza__header">{title}</p>
       <div className="kind-section">
         <div className="kind">
-          <div className="kind-active">thin</div>
-          <div>traditional</div>
+          {types.map((obj, index) => {
+            return (
+              <div
+                key={index}
+                className={activeType === index ? "kind-active" : ""}
+                onClick={() => {
+                  setActiveType(index);
+                }}
+              >
+                {pizzaTypes[obj]}
+              </div>
+            );
+          })}
         </div>
         <div className="size">
-          <div>26 cm.</div>
-          <div className="size-active">30 cm.</div>
-          <div>40 cm.</div>
+          {sizes.map((obj, index) => {
+            return (
+              <div
+                key={index}
+                className={activeSize === index ? "size-active" : ""}
+                onClick={() => {
+                  setActiveSize(index);
+                }}
+              >
+                {obj} cm.
+              </div>
+            );
+          })}
         </div>
       </div>
       <div className="price-section">
         <p className="pizza-price">from {price} $</p>
-        <button className="btn active-btn" onClick={onClickAdd}>
+        <button
+          className={pizzaCount > 0 ? "btn active-btn" : "btn"}
+          onClick={onClickAdd}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width={12}
@@ -38,7 +66,7 @@ export default function PizzaBlock({ title, price }) {
             />
           </svg>
           <p>Add</p>
-          <span className="amount">{pizzaCount}</span>
+          {pizzaCount > 0 ? <span className="amount">{pizzaCount}</span> : ""}
         </button>
       </div>
     </div>
