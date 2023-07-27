@@ -21,7 +21,7 @@ export default function PizzaBlock({ title, price, imageUrl, sizes, types }) {
             return (
               <div
                 key={index}
-                className={activeType === index ? "kind-active" : ""}
+                className={activeType === index ? "kind-active" : undefined}
                 onClick={() => {
                   setActiveType(index);
                 }}
@@ -36,7 +36,7 @@ export default function PizzaBlock({ title, price, imageUrl, sizes, types }) {
             return (
               <div
                 key={index}
-                className={activeSize === index ? "size-active" : ""}
+                className={activeSize === index ? "size-active" : undefined}
                 onClick={() => {
                   setActiveSize(index);
                 }}
