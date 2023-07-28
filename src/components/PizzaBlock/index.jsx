@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+import styles from "./PizzaBlock.module.scss";
+
 export default function PizzaBlock({ title, price, imageUrl, sizes, types }) {
   const pizzaTypes = ["thin", "traditional"];
 
@@ -12,16 +14,18 @@ export default function PizzaBlock({ title, price, imageUrl, sizes, types }) {
   };
 
   return (
-    <div className="pizza__item">
-      <img src={imageUrl} alt="pizza" className="pizza__img" />
-      <p className="pizza__header">{title}</p>
-      <div className="kind-section">
-        <div className="kind">
+    <div className={styles.pizza__item}>
+      <img src={imageUrl} alt="pizza" className={styles.pizza__img} />
+      <p className={styles.pizza__header}>{title}</p>
+      <div className={styles.kind_section}>
+        <div className={styles.kind}>
           {types.map((obj, index) => {
             return (
               <div
                 key={index}
-                className={activeType === index ? "kind-active" : undefined}
+                className={
+                  activeType === index ? styles.kind_active : undefined
+                }
                 onClick={() => {
                   setActiveType(index);
                 }}
@@ -31,12 +35,14 @@ export default function PizzaBlock({ title, price, imageUrl, sizes, types }) {
             );
           })}
         </div>
-        <div className="size">
+        <div className={styles.size}>
           {sizes.map((obj, index) => {
             return (
               <div
                 key={index}
-                className={activeSize === index ? "size-active" : undefined}
+                className={
+                  activeSize === index ? styles.size_active : undefined
+                }
                 onClick={() => {
                   setActiveSize(index);
                 }}
@@ -47,10 +53,10 @@ export default function PizzaBlock({ title, price, imageUrl, sizes, types }) {
           })}
         </div>
       </div>
-      <div className="price-section">
-        <p className="pizza-price">from {price} $</p>
+      <div className={styles.price_section}>
+        <p className={styles.pizza_price}>from {price} $</p>
         <button
-          className={pizzaCount > 0 ? "btn active-btn" : "btn"}
+          className={pizzaCount > 0 ? styles.active_btn : styles.btn}
           onClick={onClickAdd}
         >
           <svg
@@ -66,7 +72,11 @@ export default function PizzaBlock({ title, price, imageUrl, sizes, types }) {
             />
           </svg>
           <p>Add</p>
-          {pizzaCount > 0 ? <span className="amount">{pizzaCount}</span> : ""}
+          {pizzaCount > 0 ? (
+            <span className={styles.amount}>{pizzaCount}</span>
+          ) : (
+            ""
+          )}
         </button>
       </div>
     </div>

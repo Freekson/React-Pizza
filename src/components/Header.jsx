@@ -1,18 +1,22 @@
+import React from "react";
+import { Link } from "react-router-dom";
+
 function Header() {
   return (
     <header className="header">
       <div className="header__wrapper">
-        <div className="header__logo-section logo-section">
+        <Link to="/" className="header__logo-section logo-section">
           <img
             src="assets/logo.png"
             alt="not found :("
             className="logo-section__img"
           />
+
           <div className="logo-section__text">
             <b>REACT PIZZA</b>
             <p>The most delicious pizza in the universe</p>
           </div>
-        </div>
+        </Link>
         <div className="header__cart-section cart-section">
           <span>52 $</span>
           <div className="cart-section__vl" />
