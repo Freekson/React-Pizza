@@ -1,9 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 
-function Categories() {
+function Categories({ activeCategory, setActiveCategory }) {
   const categories = ["All", "Meat", "Vegetarian", "Grill", "Spicy", "Closed"];
-
-  const [activeIndex, setActiveIndex] = useState(0);
 
   return (
     <ul className="nav__list">
@@ -11,9 +9,9 @@ function Categories() {
         return (
           <li
             key={index}
-            className={activeIndex === index ? "active" : undefined}
+            className={activeCategory === index ? "active" : undefined}
             onClick={() => {
-              setActiveIndex(index);
+              setActiveCategory(index);
             }}
           >
             {item}

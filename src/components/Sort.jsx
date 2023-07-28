@@ -1,10 +1,16 @@
 import React, { useState } from "react";
 
-function Sort() {
-  const list = ["Popularity", "Price", "Alphabet"];
+function Sort({ activeSort, setActiveSort }) {
+  const list = [
+    { name: "Rating(ASC)", sortProperty: "rating" },
+    { name: "Rating(DESC)", sortProperty: "rating&_order=desc" },
+    { name: "Price(ASC)", sortProperty: "price" },
+    { name: "Price(DESC)", sortProperty: "price&_order=desc" },
+    { name: "Alphabet(ASC)", sortProperty: "title" },
+    { name: "Alphabet(DESC)", sortProperty: "title&_order=desc" },
+  ];
 
   const [open, setOpen] = useState(false);
-  const [activeSort, setActiveSort] = useState(0);
 
   return (
     <div className="nav__sort active">
@@ -14,7 +20,7 @@ function Sort() {
         className={open ? "active-arrow" : "arrow"}
       />
       <p>
-        Sort by <span onClick={() => setOpen(!open)}>{list[activeSort]}</span>
+        Sort by <span onClick={() => setOpen(!open)}>{activeSort.name}</span>
       </p>
       {open && (
         <ul className="nav__menu nav__menu_active">
@@ -23,16 +29,16 @@ function Sort() {
               <li
                 key={index}
                 onClick={() => {
-                  setActiveSort(index);
+                  setActiveSort(item);
                   setOpen(false);
                 }}
                 className={
-                  activeSort === index
+                  activeSort.sortProperty === item.sortProperty
                     ? "menu__item menu__item_active"
                     : "menu__item"
                 }
               >
-                {item}
+                {item.name}
               </li>
             );
           })}
