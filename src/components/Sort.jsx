@@ -2,12 +2,12 @@ import React, { useState } from "react";
 
 function Sort({ activeSort, setActiveSort }) {
   const list = [
-    { name: "Rating(ASC)", sortProperty: "rating" },
-    { name: "Rating(DESC)", sortProperty: "rating&_order=desc" },
-    { name: "Price(ASC)", sortProperty: "price" },
-    { name: "Price(DESC)", sortProperty: "price&_order=desc" },
-    { name: "Alphabet(ASC)", sortProperty: "title" },
-    { name: "Alphabet(DESC)", sortProperty: "title&_order=desc" },
+    { name: "Rating (ASC)", sortProperty: "rating" },
+    { name: "Rating (DESC)", sortProperty: "rating&_order=desc" },
+    { name: "Price (ASC)", sortProperty: "price" },
+    { name: "Price (DESC)", sortProperty: "price&_order=desc" },
+    { name: "Alphabet (ASC)", sortProperty: "title" },
+    { name: "Alphabet (DESC)", sortProperty: "title&_order=desc" },
   ];
 
   const [open, setOpen] = useState(false);

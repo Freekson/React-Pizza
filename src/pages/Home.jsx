@@ -6,11 +6,11 @@ import Sort from "../components/Sort";
 import PizzaBlock from "../components/PizzaBlock";
 import PizzaSkeleton from "../components/PizzaBlock/PizzaSkeleton";
 
-export default function Home() {
+export default function Home({ searchValue }) {
   const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [activeSort, setActiveSort] = useState({
-    name: "Rating(ASC)",
+    name: "Rating (ASC)",
     sortProperty: "rating",
   });
   const [activeCategory, setActiveCategory] = useState(0);
@@ -29,7 +29,6 @@ export default function Home() {
         setItems(pizzas.data);
         setIsLoading(false);
         window.scrollTo(0, 0);
-        console.log(activeSort.sortProperty);
       } catch (err) {
         console.log(err);
         alert("Error while data loading");
@@ -53,9 +52,18 @@ export default function Home() {
           ? [...new Array(9)].map((_, index) => {
               return <PizzaSkeleton key={index} />;
             })
-          : items.map((item) => {
-              return <PizzaBlock {...item} key={item.id} />;
-            })}
+          : items
+              .filter((item) => {
+                if (
+                  item.title.toLowerCase().includes(searchValue.toLowerCase())
+                ) {
+                  return true;
+                }
+                return false;
+              })
+              .map((item) => {
+                return <PizzaBlock {...item} key={item.id} />;
+              })}
       </section>
     </>
   );

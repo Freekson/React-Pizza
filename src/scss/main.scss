@@ -2,6 +2,11 @@ a {
   text-decoration: none;
   color: black;
 }
+
+input {
+  outline: none;
+}
+
 body {
   background-color: #ffdf8c;
   font-family: "Nunito", sans-serif;
@@ -20,6 +25,7 @@ body {
         width: 90%;
         display: flex;
         justify-content: space-between;
+        align-items: center;
         margin: 0 5%;
         padding: 3% 0;
 
@@ -394,6 +400,12 @@ body {
   body .pizza-cart {
     width: 80%;
   }
+  .header__wrapper {
+    flex-wrap: wrap;
+  }
+  .header__logo-section {
+    margin-bottom: 30px;
+  }
 }
 
 @media (max-width: 800px) {
@@ -402,10 +414,6 @@ body {
       .header .header__wrapper {
         flex-wrap: wrap;
         justify-content: center;
-
-        .cart-section {
-          margin-top: 20px;
-        }
       }
 
       .nav__list {
