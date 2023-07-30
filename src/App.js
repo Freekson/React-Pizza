@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, createContext } from "react";
 import { Route, Routes } from "react-router-dom";
 
 import "./scss/main.scss";
@@ -9,19 +9,26 @@ import Cart from "./pages/Cart";
 import EmptyCart from "./pages/EmptyCart";
 import NotFound from "./components/NotFound";
 
+export const AppContext = createContext();
+
 function App() {
   const [searchValue, setSearchValue] = useState("");
-  console.log(searchValue);
+  const [currentPage, setCurrentPage] = useState(0);
+
   return (
     <div className="App">
       <div className="wrapper">
-        <Header searchValue={searchValue} setSearchValue={setSearchValue} />
-        <Routes>
-          <Route path="/" element={<Home searchValue={searchValue} />} exact />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/empty-cart" element={<EmptyCart />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <AppContext.Provider
+          value={{ searchValue, setSearchValue, currentPage, setCurrentPage }}
+        >
+          <Header />
+          <Routes>
+            <Route path="/" element={<Home />} exact />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/empty-cart" element={<EmptyCart />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </AppContext.Provider>
       </div>
     </div>
   );

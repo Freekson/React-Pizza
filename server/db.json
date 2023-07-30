@@ -7,7 +7,7 @@
       "types": [0, 1],
       "sizes": [26, 30, 40],
       "price": 38,
-      "category": 1,
+      "category": 4,
       "rating": 4
     },
     {
@@ -57,7 +57,7 @@
       "types": [0],
       "sizes": [30, 40],
       "price": 50,
-      "category": 4,
+      "category": 5,
       "rating": 4
     },
     {
@@ -77,7 +77,7 @@
       "types": [0, 1],
       "sizes": [26, 30, 40],
       "price": 45,
-      "category": 1,
+      "category": 2,
       "rating": 10
     },
     {
@@ -98,6 +98,116 @@
       "sizes": [26, 30, 40],
       "price": 28,
       "category": 2,
+      "rating": 7
+    },
+    {
+      "id": 10,
+      "imageUrl": "https://dodopizza-a.akamaihd.net/static/Img/Products/ddadb2bd7f2d40459acddbe2f51a2389_366x366.webp",
+      "title": "Double chiken ",
+      "types": [0, 1],
+      "sizes": [26, 40],
+      "price": 24,
+      "category": 1,
+      "rating": 6
+    },
+    {
+      "id": 11,
+      "imageUrl": "https://dodopizza-a.akamaihd.net/static/Img/Products/02ca2561953b488993878d1f70e359de_366x366.webp",
+      "title": "Chisoro fresh",
+      "types": [0, 1],
+      "sizes": [26, 30, 34],
+      "price": 32,
+      "category": 4,
+      "rating": 5
+    },
+    {
+      "id": 12,
+      "imageUrl": "https://dodopizza-a.akamaihd.net/static/Img/Products/03c840b1ab6f4ccb84f5dc167e146598_366x366.webp",
+      "title": "Diablo",
+      "types": [1],
+      "sizes": [26, 30],
+      "price": 31,
+      "category": 4,
+      "rating": 7
+    },
+    {
+      "id": 13,
+      "imageUrl": "https://dodopizza-a.akamaihd.net/static/Img/Products/03c840b1ab6f4ccb84f5dc167e146598_366x366.webp",
+      "title": "Barbecue sausages",
+      "types": [0],
+      "sizes": [26, 30],
+      "price": 35,
+      "category": 3,
+      "rating": 6
+    },
+    {
+      "id": 14,
+      "imageUrl": "https://dodopizza-a.akamaihd.net/static/Img/Products/d6c9f93ea37649ac923e9586c034a5a0_366x366.webp",
+      "title": "Vegetables mix",
+      "types": [0, 1],
+      "sizes": [24, 28, 30],
+      "price": 41,
+      "category": 2,
+      "rating": 5
+    },
+    {
+      "id": 15,
+      "imageUrl": "https://dodopizza-a.akamaihd.net/static/Img/Products/c24bb8e55baa4ca68945459ac6afdf3e_760x760.webp",
+      "title": "Hawaiian",
+      "types": [0, 1],
+      "sizes": [26, 30],
+      "price": 32,
+      "category": 1,
+      "rating": 9
+    },
+    {
+      "id": 16,
+      "imageUrl": "https://dodopizza-a.akamaihd.net/static/Img/Products/18dbb12240b041a191c9dc73c9c1f4ef_366x366.webp",
+      "title": "Meat pizza",
+      "types": [0, 1],
+      "sizes": [20, 30],
+      "price": 41,
+      "category": 1,
+      "rating": 8
+    },
+    {
+      "id": 17,
+      "imageUrl": "https://dodopizza-a.akamaihd.net/static/Img/Products/c8ac7d2eb95b4bd0b8bc2f366415896c_760x760.webp",
+      "title": "Curry chicken",
+      "types": [0, 1],
+      "sizes": [26, 28, 30],
+      "price": 39,
+      "category": 4,
+      "rating": 8
+    },
+    {
+      "id": 18,
+      "imageUrl": "https://dodopizza-a.akamaihd.net/static/Img/Products/3a948b9d5af14d219e2c54282229755a_366x366.webp",
+      "title": "Burger pizza",
+      "types": [1],
+      "sizes": [24, 30],
+      "price": 25,
+      "category": 3,
+      "rating": 4
+    },
+    {
+      "id": 19,
+      "imageUrl": "https://dodopizza-a.akamaihd.net/static/Img/Products/a96e936c158249e18c831bbcce677065_760x760.webp",
+      "title": "Double pepperoni",
+      "types": [0],
+      "sizes": [26, 30, 40],
+      "price": 37,
+      "category": 1,
+      "rating": 5
+    },
+    {
+      "id": 20,
+      "imageUrl": "https://dodopizza-a.akamaihd.net/static/Img/Products/e379c72af6c54f81b7b4e6ffbb2b1729_366x366.webp",
+      "title": "Chicken ranch",
+      "types": [0, 1],
+      "sizes": [24, 28],
+      "price": 39,
+      "category": 1,
       "rating": 7
     }
   ]

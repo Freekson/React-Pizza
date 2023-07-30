@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import Search from "./Search";
 
-function Header({ searchValue, setSearchValue }) {
+function Header() {
   return (
     <header className="header">
       <div className="header__wrapper">
@@ -19,7 +19,7 @@ function Header({ searchValue, setSearchValue }) {
             <p>The most delicious pizza in the universe</p>
           </div>
         </Link>
-        <Search searchValue={searchValue} setSearchValue={setSearchValue} />
+        <Search />
         <div className="header__cart-section cart-section">
           <span>52 $</span>
           <div className="cart-section__vl" />
