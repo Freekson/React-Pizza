@@ -37,7 +37,6 @@ export default function Pagination({ pages }) {
           <p>&#62;</p>
         </li>
       </ul>
-      {console.log(currentPage)}
     </>
   );
 }

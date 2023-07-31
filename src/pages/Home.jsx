@@ -1,25 +1,32 @@
 import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
+import { useSelector, useDispatch } from "react-redux";
+
+import { setCategoryId } from "../redux/slices/filterSlice";
+import { AppContext } from "../App";
 
 import Categories from "../components/Categories";
 import Sort from "../components/Sort";
 import PizzaBlock from "../components/PizzaBlock";
 import PizzaSkeleton from "../components/PizzaBlock/PizzaSkeleton";
 import Pagination from "../components/Pagination";
-import { AppContext } from "../App";
 
 export default function Home() {
-  const { currentPage, searchValue } = useContext(AppContext);
+  const dispatch = useDispatch();
+  const activeCategory = useSelector((state) => state.filter.categoryId);
+  const activeSort = useSelector((state) => state.filter.sort);
+
+  const { setCurrentPage, currentPage, searchValue } = useContext(AppContext);
 
   const [items, setItems] = useState([]);
   const [allItems, setAllItems] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [activeSort, setActiveSort] = useState({
-    name: "Rating (ASC)",
-    sortProperty: "rating",
-  });
-  const [activeCategory, setActiveCategory] = useState(0);
   const itemInPage = 8;
+
+  const onChangeCategory = (id) => {
+    dispatch(setCategoryId(id));
+    setCurrentPage(0);
+  };
 
   useEffect(() => {
     async function fetchData() {
@@ -60,9 +67,9 @@ export default function Home() {
       <nav className="nav">
         <Categories
           activeCategory={activeCategory}
-          setActiveCategory={setActiveCategory}
+          onClickCategory={onChangeCategory}
         />
-        <Sort activeSort={activeSort} setActiveSort={setActiveSort} />
+        <Sort />
       </nav>
       <h3>All pizzas</h3>
       <section className="pizza">

@@ -1,9 +1,6 @@
-import React, { useContext } from "react";
-import { AppContext } from "../App";
+import React from "react";
 
-function Categories({ activeCategory, setActiveCategory }) {
-  const { setCurrentPage } = useContext(AppContext);
-
+function Categories({ activeCategory, onClickCategory }) {
   const categories = ["All", "Meat", "Vegetarian", "Grill", "Spicy", "Closed"];
 
   return (
@@ -14,8 +11,7 @@ function Categories({ activeCategory, setActiveCategory }) {
             key={index}
             className={activeCategory === index ? "active" : undefined}
             onClick={() => {
-              setActiveCategory(index);
-              setCurrentPage(0);
+              onClickCategory(index);
             }}
           >
             {item}

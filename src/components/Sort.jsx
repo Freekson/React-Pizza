@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { setSort } from "../redux/slices/filterSlice";
 
-function Sort({ activeSort, setActiveSort }) {
+function Sort() {
   const list = [
     { name: "Rating (ASC)", sortProperty: "rating" },
     { name: "Rating (DESC)", sortProperty: "rating&_order=desc" },
@@ -11,6 +13,9 @@ function Sort({ activeSort, setActiveSort }) {
   ];
 
   const [open, setOpen] = useState(false);
+
+  const dispatch = useDispatch();
+  const activeSort = useSelector((state) => state.filter.sort);
 
   return (
     <div className="nav__sort active">
@@ -29,7 +34,7 @@ function Sort({ activeSort, setActiveSort }) {
               <li
                 key={index}
                 onClick={() => {
-                  setActiveSort(item);
+                  dispatch(setSort(item));
                   setOpen(false);
                 }}
                 className={
