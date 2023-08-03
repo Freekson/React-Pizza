@@ -1,9 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux/es/hooks/useSelector";
 
 import Search from "./Search";
 
 function Header() {
+  const { items, totalPrice } = useSelector((state) => state.cart);
+
+  const totalCount = items.reduce((sum, item) => sum + item.count, 0);
   return (
     <header className="header">
       <div className="header__wrapper">
@@ -20,14 +24,14 @@ function Header() {
           </div>
         </Link>
         <Search />
-        <div className="header__cart-section cart-section">
-          <span>52 $</span>
+        <Link to="/cart" className="header__cart-section cart-section">
+          <span>{totalPrice} $</span>
           <div className="cart-section__vl" />
           <span>
             <img src="assets/cart.svg" alt="cart" />
-            <p>3</p>
+            <p>{totalCount}</p>
           </span>
-        </div>
+        </Link>
       </div>
       <div className="header__vl" />
     </header>

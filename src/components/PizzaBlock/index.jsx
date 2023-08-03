@@ -1,16 +1,42 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+import { addItem } from "../../redux/slices/cartSlice";
 
 import styles from "./PizzaBlock.module.scss";
 
-export default function PizzaBlock({ title, price, imageUrl, sizes, types }) {
-  const pizzaTypes = ["thin", "traditional"];
+const pizzaTypes = ["thin", "traditional"];
 
-  const [pizzaCount, setPizzaCount] = useState(0);
+export default function PizzaBlock({
+  id,
+  title,
+  price,
+  imageUrl,
+  sizes,
+  types,
+}) {
+  const dispatch = useDispatch();
+
   const [activeType, setActiveType] = useState(0);
   const [activeSize, setActiveSize] = useState(0);
 
+  const pizzaCount = useSelector((state) => {
+    const cartItem = state.cart.items.filter((obj) => obj.id === id);
+    return cartItem.reduce((sum, obj) => {
+      return obj.count + sum;
+    }, 0);
+  });
+
   const onClickAdd = () => {
-    setPizzaCount(pizzaCount + 1);
+    const item = {
+      id,
+      title,
+      price,
+      imageUrl,
+      type: pizzaTypes[activeType],
+      size: sizes[activeSize],
+    };
+    dispatch(addItem(item));
   };
 
   return (

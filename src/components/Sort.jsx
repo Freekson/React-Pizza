@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setSort } from "../redux/slices/filterSlice";
+import { useRef } from "react";
+import { useEffect } from "react";
 
 export const sortList = [
   { name: "Rating (ASC)", sortProperty: "rating" },
@@ -13,12 +15,23 @@ export const sortList = [
 
 function Sort() {
   const [open, setOpen] = useState(false);
+  const sortRef = useRef();
 
   const dispatch = useDispatch();
+
   const activeSort = useSelector((state) => state.filter.sort);
 
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (!e.composedPath().includes(sortRef.current)) {
+        setOpen(false);
+      }
+    };
+    document.body.addEventListener("click", { once: true }, handleClickOutside);
+  }, []);
+
   return (
-    <div className="nav__sort active">
+    <div ref={sortRef} className="nav__sort active">
       <img
         src="assets/arrow.svg"
         alt="^-^"

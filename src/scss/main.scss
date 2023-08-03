@@ -276,63 +276,6 @@ body {
   .pizza-cart {
     width: 60%;
     margin: 0 auto;
-
-    .vl {
-      height: 1px;
-      width: 100%;
-      background-color: #f4f4f4;
-    }
-
-    .pizza-cart__item {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin: 20px 0;
-
-      .pizza-img {
-        display: flex;
-        align-items: center;
-        width: 40%;
-
-        img {
-          width: 80px;
-          height: 80px;
-        }
-
-        .pizza-cart__text {
-          margin-left: 20px;
-
-          p {
-            margin: 0;
-          }
-
-          .text__header {
-            font-weight: bold;
-            font-size: 1.375rem;
-          }
-
-          .text__gray {
-            color: #8d8d8d;
-          }
-        }
-      }
-
-      .pizza-amount {
-        display: flex;
-        align-items: center;
-
-        .amount {
-          margin: 0 10px;
-          font-size: 1.375rem;
-          font-weight: bold;
-        }
-      }
-
-      .pizza-prise p {
-        font-size: 1.375rem;
-        font-weight: bold;
-      }
-    }
   }
 
   .conclusion {
@@ -371,11 +314,20 @@ body {
       justify-content: center;
       align-items: center;
       box-sizing: border-box;
+      cursor: pointer;
     }
 
     .btn-gray {
+      display: flex;
+      align-items: center;
+      justify-content: center;
       color: #cacaca;
       border: 1px solid #cacaca;
+      padding: 5px;
+      border-radius: 30px;
+      height: 55px;
+      width: 210px;
+      box-sizing: border-box;
 
       svg {
         margin-right: 20px;
@@ -427,6 +379,7 @@ body {
 
     .conclusion {
       flex-direction: column;
+      align-items: center;
 
       .order p {
         margin-top: 0;
@@ -437,60 +390,12 @@ body {
       width: 80%;
       justify-content: space-around;
     }
-
-    .pizza-cart .pizza-cart__item {
-      flex-direction: column;
-
-      .pizza-img {
-        width: 60%;
-
-        img {
-          width: 130px;
-          height: 130px;
-        }
-      }
-
-      .pizza-prise p {
-        margin: 0;
-      }
-
-      .pizza-delete {
-        margin-top: 15px;
-
-        svg {
-          width: 50px;
-          height: 50px;
-        }
-      }
-
-      .pizza-amount {
-        svg {
-          width: 40px;
-          height: 40px;
-        }
-
-        .amount {
-          margin: 0 20px;
-        }
-      }
-    }
   }
 }
 
 @media (max-width: 670px) {
   html {
     font-size: 20px;
-  }
-
-  body {
-    .pizza-cart .pizza-cart__item .pizza-img {
-      flex-direction: column;
-
-      .pizza-cart__text {
-        margin: 0;
-        text-align: center;
-      }
-    }
   }
 
   .pizza-cart {
