@@ -1,18 +1,18 @@
 import React from "react";
-// import ReactPaginate from "react-paginate";
 import styles from "./Pagination.module.scss";
-import { useContext } from "react";
-import { AppContext } from "../../App";
+import { useSelector, useDispatch } from "react-redux";
+import { setCurrentPage } from "../../redux/slices/filterSlice";
 
 export default function Pagination({ pages }) {
-  const { currentPage, setCurrentPage } = useContext(AppContext);
+  const dispatch = useDispatch();
+  const currentPage = useSelector((state) => state.filter.pageCount);
 
   return (
     <>
       <ul className={styles.root}>
         <li
           onClick={() =>
-            currentPage > 0 ? setCurrentPage(currentPage - 1) : ""
+            currentPage > 0 ? dispatch(setCurrentPage(currentPage - 1)) : ""
           }
         >
           <p href="#<">&#60;</p>
@@ -22,8 +22,7 @@ export default function Pagination({ pages }) {
             key={number}
             className={currentPage === number ? styles.active : ""}
             onClick={() => {
-              setCurrentPage(number);
-              console.log(currentPage);
+              dispatch(setCurrentPage(number));
             }}
           >
             <p>{number + 1}</p>
@@ -31,7 +30,9 @@ export default function Pagination({ pages }) {
         ))}
         <li
           onClick={() =>
-            currentPage < pages - 1 ? setCurrentPage(currentPage + 1) : ""
+            currentPage < pages - 1
+              ? dispatch(setCurrentPage(currentPage + 1))
+              : ""
           }
         >
           <p>&#62;</p>

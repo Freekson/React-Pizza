@@ -13,14 +13,11 @@ export const AppContext = createContext();
 
 function App() {
   const [searchValue, setSearchValue] = useState("");
-  const [currentPage, setCurrentPage] = useState(0);
 
   return (
     <div className="App">
       <div className="wrapper">
-        <AppContext.Provider
-          value={{ searchValue, setSearchValue, currentPage, setCurrentPage }}
-        >
+        <AppContext.Provider value={{ searchValue, setSearchValue }}>
           <Header />
           <Routes>
             <Route path="/" element={<Home />} exact />

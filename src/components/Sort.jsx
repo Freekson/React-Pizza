@@ -2,16 +2,16 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setSort } from "../redux/slices/filterSlice";
 
-function Sort() {
-  const list = [
-    { name: "Rating (ASC)", sortProperty: "rating" },
-    { name: "Rating (DESC)", sortProperty: "rating&_order=desc" },
-    { name: "Price (ASC)", sortProperty: "price" },
-    { name: "Price (DESC)", sortProperty: "price&_order=desc" },
-    { name: "Alphabet (ASC)", sortProperty: "title" },
-    { name: "Alphabet (DESC)", sortProperty: "title&_order=desc" },
-  ];
+export const sortList = [
+  { name: "Rating (ASC)", sortProperty: "rating" },
+  { name: "Rating (DESC)", sortProperty: "rating&_order=desc" },
+  { name: "Price (ASC)", sortProperty: "price" },
+  { name: "Price (DESC)", sortProperty: "price&_order=desc" },
+  { name: "Alphabet (ASC)", sortProperty: "title" },
+  { name: "Alphabet (DESC)", sortProperty: "title&_order=desc" },
+];
 
+function Sort() {
   const [open, setOpen] = useState(false);
 
   const dispatch = useDispatch();
@@ -29,7 +29,7 @@ function Sort() {
       </p>
       {open && (
         <ul className="nav__menu nav__menu_active">
-          {list.map((item, index) => {
+          {sortList.map((item, index) => {
             return (
               <li
                 key={index}
