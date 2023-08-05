@@ -9,6 +9,7 @@
   align-items: center;
   justify-content: space-between;
   margin: 20px 0;
+  user-select: none;
 
   .pizza_img {
     display: flex;
@@ -18,11 +19,11 @@
     img {
       width: 80px;
       height: 80px;
+      pointer-events: none;
     }
 
     .pizza_cart__text {
       margin-left: 20px;
-
       p {
         margin: 0;
       }
@@ -30,10 +31,12 @@
       .text__header {
         font-weight: bold;
         font-size: 1.375rem;
+        user-select: text;
       }
 
       .text__gray {
         color: #8d8d8d;
+        user-select: text;
       }
     }
   }
@@ -52,6 +55,7 @@
   .pizza_price p {
     font-size: 1.375rem;
     font-weight: bold;
+    user-select: text;
   }
 }
 

@@ -27,7 +27,11 @@ function Sort() {
         setOpen(false);
       }
     };
-    document.body.addEventListener("click", { once: true }, handleClickOutside);
+    document.body.addEventListener("click", handleClickOutside);
+
+    return () => {
+      document.body.removeEventListener("click", handleClickOutside);
+    };
   }, []);
 
   return (

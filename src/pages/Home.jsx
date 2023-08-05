@@ -1,6 +1,5 @@
-import React, { useEffect, useState, useContext, useRef } from "react";
+import React, { useEffect, useContext, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import qs from "qs";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -9,6 +8,7 @@ import {
   setCurrentPage,
   setFilters,
 } from "../redux/slices/filterSlice";
+import { fetchPizzas, fetchAllPizzas } from "../redux/slices/pizzaSlice";
 import { AppContext } from "../App";
 
 import Categories from "../components/Categories";
@@ -26,12 +26,10 @@ export default function Home() {
   const activeCategory = useSelector((state) => state.filter.categoryId);
   const currentPage = useSelector((state) => state.filter.pageCount);
   const activeSort = useSelector((state) => state.filter.sort);
+  const { items, status, pizzas } = useSelector((state) => state.pizza);
 
   const { searchValue } = useContext(AppContext);
 
-  const [items, setItems] = useState([]);
-  const [allItems, setAllItems] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
   const itemInPage = 8;
 
   const onChangeCategory = (id) => {
@@ -40,46 +38,27 @@ export default function Home() {
   };
 
   useEffect(() => {
-    setIsLoading(true);
-    try {
-      axios.get(`http://localhost:3001/pizzas`).then((res) => {
-        setAllItems(res.data);
-        setIsLoading(false);
-      });
-    } catch (err) {
-      console.log(err);
-      alert("Error while all data loading");
-    }
-  }, []);
+    dispatch(fetchAllPizzas({ activeCategory, activeSort, searchValue }));
+  }, [activeCategory, activeSort, dispatch, searchValue]);
 
   useEffect(() => {
     async function fetchData() {
-      setIsLoading(true);
-      try {
-        const [pizzas] = await Promise.all([
-          axios.get(
-            `http://localhost:3001/pizzas?_page=${
-              currentPage + 1
-            }&_limit=${itemInPage}&${
-              activeCategory > 0 ? `category=${activeCategory}` : ""
-            }&_sort=${activeSort.sortProperty}${
-              searchValue !== "" ? "&q=" + searchValue : ""
-            }`
-          ),
-        ]);
-        setItems(pizzas.data);
-        setIsLoading(false);
-        window.scrollTo(0, 0);
-      } catch (err) {
-        console.log(err);
-        alert("Error while data loading");
-      }
+      dispatch(
+        fetchPizzas({
+          activeCategory,
+          currentPage,
+          activeSort,
+          searchValue,
+          itemInPage,
+        })
+      );
+      window.scrollTo(0, 0);
     }
     if (!isSearch.current) {
       fetchData();
     }
     isSearch.current = false;
-  }, [activeCategory, activeSort, searchValue, currentPage]);
+  }, [activeCategory, activeSort, searchValue, currentPage, dispatch]);
 
   useEffect(() => {
     if (window.location.search) {
@@ -115,7 +94,18 @@ export default function Home() {
       </nav>
       <h3>All pizzas</h3>
       <section className="pizza">
-        {isLoading
+        {status === "error" ? (
+          <section className="error">
+            <h3 className="error-status">An error occurred 😕</h3>
+            <p>
+              Sorry we couldn't get the pizzas. <br /> Maybe something happened
+              to our servers, come back later.
+            </p>
+          </section>
+        ) : (
+          ""
+        )}
+        {status === "loading"
           ? [...new Array(9)].map((_, index) => {
               return <PizzaSkeleton key={index} />;
             })
@@ -123,7 +113,13 @@ export default function Home() {
               return <PizzaBlock {...item} key={item.id} />;
             })}
       </section>
-      <Pagination pages={Math.ceil(allItems.length / itemInPage)} />
+      <Pagination
+        pages={
+          Math.ceil(pizzas.length / itemInPage) <= 0
+            ? 1
+            : Math.ceil(pizzas.length / itemInPage)
+        }
+      />
     </>
   );
 }
