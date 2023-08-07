@@ -1,4 +1,4 @@
-import React, { useEffect, useContext, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import qs from "qs";
 import { useSelector, useDispatch } from "react-redux";
@@ -9,7 +9,6 @@ import {
   setFilters,
 } from "../redux/slices/filterSlice";
 import { fetchPizzas, fetchAllPizzas } from "../redux/slices/pizzaSlice";
-import { AppContext } from "../App";
 
 import Categories from "../components/Categories";
 import Sort, { sortList } from "../components/Sort";
@@ -25,10 +24,9 @@ export default function Home() {
 
   const activeCategory = useSelector((state) => state.filter.categoryId);
   const currentPage = useSelector((state) => state.filter.pageCount);
+  const searchValue = useSelector((state) => state.filter.searchValue);
   const activeSort = useSelector((state) => state.filter.sort);
   const { items, status, pizzas } = useSelector((state) => state.pizza);
-
-  const { searchValue } = useContext(AppContext);
 
   const itemInPage = 8;
 

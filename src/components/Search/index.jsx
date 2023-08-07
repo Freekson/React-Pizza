@@ -1,12 +1,13 @@
-import React, { useCallback, useContext, useRef } from "react";
+import React, { useCallback, useRef } from "react";
 import debounce from "lodash.debounce";
 
+import { setSearchValue } from "../../redux/slices/filterSlice";
 import styles from "./Search.module.scss";
-import { AppContext } from "../../App";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 
 export default function Search() {
-  const { setSearchValue } = useContext(AppContext);
+  const dispatch = useDispatch();
 
   const [value, setValue] = useState("");
 
@@ -15,7 +16,7 @@ export default function Search() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const updateSearchValue = useCallback(
     debounce((value) => {
-      setSearchValue(value);
+      dispatch(setSearchValue(value));
     }, 500),
     []
   );
@@ -26,7 +27,7 @@ export default function Search() {
   };
 
   const onClickRemove = () => {
-    setSearchValue("");
+    dispatch(setSearchValue(""));
     setValue("");
     inputRef.current.focus();
   };
