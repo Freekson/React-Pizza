@@ -7,7 +7,7 @@ import { clearItems } from "../redux/slices/cartSlice";
 
 import EmptyCart from "./EmptyCart";
 
-export default function Cart() {
+const Cart: React.FC = () => {
   const dispatch = useDispatch();
   const { items, totalPrice } = useSelector((state) => state.cart);
 
@@ -146,4 +146,5 @@ export default function Cart() {
       </div>
     </>
   );
-}
+};
+export default Cart;

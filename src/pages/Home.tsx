@@ -16,7 +16,7 @@ import PizzaBlock from "../components/PizzaBlock";
 import PizzaSkeleton from "../components/PizzaBlock/PizzaSkeleton";
 import Pagination from "../components/Pagination";
 
-export default function Home() {
+const Home: React.FC = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const isSearch = useRef(false);
@@ -30,7 +30,7 @@ export default function Home() {
 
   const itemInPage = 8;
 
-  const onChangeCategory = (id) => {
+  const onChangeCategory = (id: number) => {
     dispatch(setCategoryId(id));
     dispatch(setCurrentPage(0));
   };
@@ -120,4 +120,5 @@ export default function Home() {
       />
     </>
   );
-}
+};
+export default Home;

@@ -7,14 +7,23 @@ import styles from "./PizzaBlock.module.scss";
 
 const pizzaTypes = ["thin", "traditional"];
 
-export default function PizzaBlock({
+type PizzaProps = {
+  id: number;
+  title: string;
+  price: number;
+  imageUrl: string;
+  sizes: number[];
+  types: number[];
+};
+
+const PizzaBlock: React.FC<PizzaProps> = ({
   id,
   title,
   price,
   imageUrl,
   sizes,
   types,
-}) {
+}) => {
   const dispatch = useDispatch();
 
   const [activeType, setActiveType] = useState(0);
@@ -107,4 +116,6 @@ export default function PizzaBlock({
       </div>
     </div>
   );
-}
+};
+
+export default PizzaBlock;

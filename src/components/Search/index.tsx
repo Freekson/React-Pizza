@@ -6,22 +6,22 @@ import styles from "./Search.module.scss";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 
-export default function Search() {
+const Search: React.FC = () => {
   const dispatch = useDispatch();
 
   const [value, setValue] = useState("");
 
-  const inputRef = useRef();
+  const inputRef = useRef<HTMLInputElement>(null);
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const updateSearchValue = useCallback(
-    debounce((value) => {
+    debounce((value: string) => {
       dispatch(setSearchValue(value));
     }, 500),
     []
   );
 
-  const onChangeInput = (e) => {
+  const onChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
     updateSearchValue(e.target.value);
   };
@@ -29,7 +29,7 @@ export default function Search() {
   const onClickRemove = () => {
     dispatch(setSearchValue(""));
     setValue("");
-    inputRef.current.focus();
+    inputRef.current?.focus();
   };
 
   return (
@@ -75,4 +75,5 @@ export default function Search() {
       )}
     </div>
   );
-}
+};
+export default Search;

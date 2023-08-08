@@ -4,7 +4,7 @@ import styles from "./PizzaBlock.module.scss";
 
 import "react-loading-skeleton/dist/skeleton.css";
 
-export default function PizzaSkeleton() {
+const PizzaSkeleton: React.FC = () => {
   return (
     <div className={styles.pizza__item}>
       <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
@@ -29,4 +29,5 @@ export default function PizzaSkeleton() {
       </div>
     </div>
   );
-}
+};
+export default PizzaSkeleton;
