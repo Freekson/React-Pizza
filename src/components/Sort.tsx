@@ -1,10 +1,10 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { setSort } from "../redux/slices/filterSlice";
+import { ESortProperty, setSort } from "../redux/slices/filterSlice";
 
 type SortItem = {
   name: string;
-  sortProperty: string;
+  sortProperty: ESortProperty;
 };
 type PopupClick = MouseEvent & {
   composedPath: () => [] & {
@@ -13,12 +13,12 @@ type PopupClick = MouseEvent & {
 };
 
 export const sortList: SortItem[] = [
-  { name: "Rating (ASC)", sortProperty: "rating" },
-  { name: "Rating (DESC)", sortProperty: "rating&_order=desc" },
-  { name: "Price (ASC)", sortProperty: "price" },
-  { name: "Price (DESC)", sortProperty: "price&_order=desc" },
-  { name: "Alphabet (ASC)", sortProperty: "title" },
-  { name: "Alphabet (DESC)", sortProperty: "title&_order=desc" },
+  { name: "Rating (ASC)", sortProperty: ESortProperty.RATING_ASC },
+  { name: "Rating (DESC)", sortProperty: ESortProperty.RATING_DESC },
+  { name: "Price (ASC)", sortProperty: ESortProperty.PRICE_ASC },
+  { name: "Price (DESC)", sortProperty: ESortProperty.PRICE_DESC },
+  { name: "Alphabet (ASC)", sortProperty: ESortProperty.TITLE_ASC },
+  { name: "Alphabet (DESC)", sortProperty: ESortProperty.TITLE_DESC },
 ];
 
 function Sort() {

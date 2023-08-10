@@ -8,7 +8,7 @@ type PaginationProps = {
 };
 const Pagination: React.FC<PaginationProps> = ({ pages }) => {
   const dispatch = useDispatch();
-  const currentPage = useSelector((state) => state.filter.pageCount);
+  const currentPage = useSelector((state) => state.filter.currentPage);
 
   return (
     <>
