@@ -6,10 +6,11 @@ import CartItem from "../components/CartItem";
 import { clearItems } from "../redux/slices/cartSlice";
 
 import EmptyCart from "./EmptyCart";
+import { RootState } from "../redux/store";
 
 const Cart: React.FC = () => {
   const dispatch = useDispatch();
-  const { items, totalPrice } = useSelector((state) => state.cart);
+  const { items, totalPrice } = useSelector((state: RootState) => state.cart);
 
   const totalCount = items.reduce((sum, item) => sum + item.count, 0);
 
@@ -104,7 +105,7 @@ const Cart: React.FC = () => {
           </section>
         </section>
         <section className="pizza-cart">
-          {items.map((item, index) => (
+          {items.map((item: any, index: any) => (
             <CartItem key={index} {...item} />
           ))}
         </section>

@@ -19,7 +19,7 @@ import Sort, { sortList } from "../components/Sort";
 import PizzaBlock from "../components/PizzaBlock";
 import PizzaSkeleton from "../components/PizzaBlock/PizzaSkeleton";
 import Pagination from "../components/Pagination";
-import { useAppDispatch } from "../redux/store";
+import { RootState, useAppDispatch } from "../redux/store";
 
 const Home: React.FC = () => {
   const navigate = useNavigate();
@@ -27,11 +27,19 @@ const Home: React.FC = () => {
   const isSearch = useRef(false);
   const isMounted = useRef(false);
 
-  const activeCategory = useSelector((state) => state.filter.activeCategory);
-  const currentPage = useSelector((state) => state.filter.currentPage);
-  const searchValue = useSelector((state) => state.filter.searchValue);
-  const activeSort = useSelector((state) => state.filter.sort);
-  const { items, status, pizzas } = useSelector((state) => state.pizza);
+  const activeCategory = useSelector(
+    (state: RootState) => state.filter.activeCategory
+  );
+  const currentPage = useSelector(
+    (state: RootState) => state.filter.currentPage
+  );
+  const searchValue = useSelector(
+    (state: RootState) => state.filter.searchValue
+  );
+  const activeSort = useSelector((state: RootState) => state.filter.sort);
+  const { items, status, pizzas } = useSelector(
+    (state: RootState) => state.pizza
+  );
 
   const itemInPage = 8;
 

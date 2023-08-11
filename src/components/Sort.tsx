@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { ESortProperty, setSort } from "../redux/slices/filterSlice";
+import { RootState } from "../redux/store";
 
 type SortItem = {
   name: string;
@@ -27,7 +28,7 @@ function Sort() {
 
   const dispatch = useDispatch();
 
-  const activeSort = useSelector((state) => state.filter.sort);
+  const activeSort = useSelector((state: RootState) => state.filter.sort);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {

@@ -3,9 +3,10 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 
 import Search from "./Search";
+import { RootState } from "../redux/store";
 
 function Header() {
-  const { items, totalPrice } = useSelector((state) => state.cart);
+  const { items, totalPrice } = useSelector((state: RootState) => state.cart);
 
   const totalCount = items.reduce((sum, item) => sum + item.count, 0);
   return (

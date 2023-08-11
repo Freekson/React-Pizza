@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { TCartItem, addItem } from "../../redux/slices/cartSlice";
 
 import styles from "./PizzaBlock.module.scss";
+import { RootState } from "../../redux/store";
 
 const pizzaTypes = ["thin", "traditional"];
 
@@ -29,7 +30,7 @@ const PizzaBlock: React.FC<PizzaProps> = ({
   const [activeType, setActiveType] = useState(0);
   const [activeSize, setActiveSize] = useState(0);
 
-  const pizzaCount = useSelector((state) => {
+  const pizzaCount = useSelector((state: RootState) => {
     const cartItem = state.cart.items.filter((obj) => obj.id === id);
     return cartItem.reduce((sum, obj) => {
       return obj.count + sum;
