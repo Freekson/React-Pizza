@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
 import CartItem from "../components/CartItem";
-import { clearItems } from "../redux/slices/cartSlice";
+import { clearItems } from "../redux/cart/slice";
 
 import EmptyCart from "./EmptyCart";
 import { RootState } from "../redux/store";

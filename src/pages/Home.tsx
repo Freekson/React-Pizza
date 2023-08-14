@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useCallback, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import qs from "qs";
 import { useSelector } from "react-redux";
@@ -7,12 +7,8 @@ import {
   setCategoryId,
   setCurrentPage,
   setFilters,
-} from "../redux/slices/filterSlice";
-import {
-  fetchPizzas,
-  fetchAllPizzas,
-  TPizzasParams,
-} from "../redux/slices/pizzaSlice";
+} from "../redux/filter/slice";
+import { fetchPizzas, fetchAllPizzas } from "../redux/pizza/slice";
 
 import Categories from "../components/Categories";
 import Sort, { sortList } from "../components/Sort";
@@ -20,6 +16,7 @@ import PizzaBlock from "../components/PizzaBlock";
 import PizzaSkeleton from "../components/PizzaBlock/PizzaSkeleton";
 import Pagination from "../components/Pagination";
 import { RootState, useAppDispatch } from "../redux/store";
+import { TPizzasParams } from "../redux/pizza/types";
 
 const Home: React.FC = () => {
   const navigate = useNavigate();
@@ -43,10 +40,13 @@ const Home: React.FC = () => {
 
   const itemInPage = 8;
 
-  const onChangeCategory = (id: number) => {
-    dispatch(setCategoryId(id));
-    dispatch(setCurrentPage(0));
-  };
+  const onChangeCategory = useCallback(
+    (id: number) => {
+      dispatch(setCategoryId(id));
+      dispatch(setCurrentPage(0));
+    },
+    [dispatch]
+  );
 
   useEffect(() => {
     dispatch(fetchAllPizzas({} as TPizzasParams));
@@ -93,6 +93,27 @@ const Home: React.FC = () => {
     isMounted.current = true;
   }, [activeCategory, activeSort.sortProperty, currentPage, navigate]);
 
+  const renderPizzas = () => {
+    if (status === "loading") {
+      [...new Array(9)].map((_, index) => {
+        return <PizzaSkeleton key={index} />;
+      });
+      items.map((item: any) => {
+        return <PizzaBlock {...item} key={item.id} />;
+      });
+    } else if (status === "error" || items.length <= 0) {
+      return (
+        <section className="error">
+          <h3 className="error-status">An error occurred 😕</h3>
+          <p>
+            Sorry we couldn't get the pizzas. <br /> Maybe something happened to
+            our servers, come back later.
+          </p>
+        </section>
+      );
+    }
+  };
+
   return (
     <>
       <nav className="nav">
@@ -100,29 +121,10 @@ const Home: React.FC = () => {
           activeCategory={activeCategory}
           onClickCategory={onChangeCategory}
         />
-        <Sort />
+        <Sort activeSort={activeSort} />
       </nav>
       <h3>All pizzas</h3>
-      <section className="pizza">
-        {status === "error" ? (
-          <section className="error">
-            <h3 className="error-status">An error occurred 😕</h3>
-            <p>
-              Sorry we couldn't get the pizzas. <br /> Maybe something happened
-              to our servers, come back later.
-            </p>
-          </section>
-        ) : (
-          ""
-        )}
-        {status === "loading"
-          ? [...new Array(9)].map((_, index) => {
-              return <PizzaSkeleton key={index} />;
-            })
-          : items.map((item: any) => {
-              return <PizzaBlock {...item} key={item.id} />;
-            })}
-      </section>
+      <section className="pizza">{renderPizzas()}</section>
       <Pagination
         pages={
           Math.ceil(pizzas.length / itemInPage) <= 0

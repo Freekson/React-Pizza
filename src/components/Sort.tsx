@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { ESortProperty, setSort } from "../redux/slices/filterSlice";
-import { RootState } from "../redux/store";
+import { useDispatch } from "react-redux";
+import { setSort } from "../redux/filter/slice";
+import { ESortProperty, TSort } from "../redux/filter/types";
 
 type SortItem = {
   name: string;
@@ -11,6 +11,9 @@ type PopupClick = MouseEvent & {
   composedPath: () => [] & {
     includes: (item: HTMLDivElement) => [];
   };
+};
+type TSortPopup = {
+  activeSort: TSort;
 };
 
 export const sortList: SortItem[] = [
@@ -22,13 +25,11 @@ export const sortList: SortItem[] = [
   { name: "Alphabet (DESC)", sortProperty: ESortProperty.TITLE_DESC },
 ];
 
-function Sort() {
+const Sort: React.FC<TSortPopup> = React.memo(({ activeSort }) => {
   const [open, setOpen] = useState(false);
   const sortRef = useRef<HTMLDivElement>(null);
 
   const dispatch = useDispatch();
-
-  const activeSort = useSelector((state: RootState) => state.filter.sort);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -78,5 +79,5 @@ function Sort() {
       )}
     </div>
   );
-}
+});
 export default Sort;
