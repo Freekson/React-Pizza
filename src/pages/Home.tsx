@@ -33,7 +33,11 @@ const Home: React.FC = () => {
   const searchValue = useSelector(
     (state: RootState) => state.filter.searchValue
   );
+  const sortBy = useSelector(
+    (state: RootState) => state.filter.sort.sortProperty
+  );
   const activeSort = useSelector((state: RootState) => state.filter.sort);
+
   const { items, status, pizzas } = useSelector(
     (state: RootState) => state.pizza
   );
@@ -49,19 +53,27 @@ const Home: React.FC = () => {
   );
 
   useEffect(() => {
-    dispatch(fetchAllPizzas({} as TPizzasParams));
-  }, [activeCategory, activeSort, dispatch, searchValue]);
+    dispatch(fetchAllPizzas({ sortBy, activeCategory, searchValue }));
+  }, [activeCategory, dispatch, searchValue, sortBy]);
 
   useEffect(() => {
     async function fetchData() {
-      dispatch(fetchPizzas({} as TPizzasParams));
+      dispatch(
+        fetchPizzas({
+          sortBy,
+          activeCategory,
+          searchValue,
+          currentPage,
+          itemInPage,
+        })
+      );
       window.scrollTo(0, 0);
     }
     if (!isSearch.current) {
       fetchData();
     }
     isSearch.current = false;
-  }, [activeCategory, activeSort, searchValue, currentPage, dispatch]);
+  }, [activeCategory, sortBy, searchValue, currentPage, dispatch]);
 
   useEffect(() => {
     if (window.location.search) {
@@ -84,35 +96,14 @@ const Home: React.FC = () => {
   useEffect(() => {
     if (isMounted.current) {
       const querryString = qs.stringify({
-        sortProperty: activeSort.sortProperty,
+        sortProperty: sortBy,
         activeCategory,
         currentPage,
       });
       navigate(`?${querryString}`);
     }
     isMounted.current = true;
-  }, [activeCategory, activeSort.sortProperty, currentPage, navigate]);
-
-  const renderPizzas = () => {
-    if (status === "loading") {
-      [...new Array(9)].map((_, index) => {
-        return <PizzaSkeleton key={index} />;
-      });
-      items.map((item: any) => {
-        return <PizzaBlock {...item} key={item.id} />;
-      });
-    } else if (status === "error" || items.length <= 0) {
-      return (
-        <section className="error">
-          <h3 className="error-status">An error occurred 😕</h3>
-          <p>
-            Sorry we couldn't get the pizzas. <br /> Maybe something happened to
-            our servers, come back later.
-          </p>
-        </section>
-      );
-    }
-  };
+  }, [activeCategory, sortBy, currentPage, navigate]);
 
   return (
     <>
@@ -124,7 +115,37 @@ const Home: React.FC = () => {
         <Sort activeSort={activeSort} />
       </nav>
       <h3>All pizzas</h3>
-      <section className="pizza">{renderPizzas()}</section>
+      <section className="pizza">
+        {status === "error" ? (
+          <section className="error">
+            <h3 className="error-status">An error occurred 😕</h3>
+            <p>
+              Sorry we couldn't get the pizzas. <br /> Maybe something happened
+              to our servers, come back later.
+            </p>
+          </section>
+        ) : (
+          ""
+        )}
+        {status === "loading"
+          ? [...new Array(9)].map((_, index) => {
+              return <PizzaSkeleton key={index} />;
+            })
+          : items.map((item: any) => {
+              return <PizzaBlock {...item} key={item.id} />;
+            })}
+        {pizzas.length <= 0 ? (
+          <section className="error">
+            <h3 className="error-status">An error occurred 😕</h3>
+            <p>
+              Sorry we couldn't get the pizzas with this filters. <br /> Сhange
+              filters and try again
+            </p>
+          </section>
+        ) : (
+          ""
+        )}
+      </section>
       <Pagination
         pages={
           Math.ceil(pizzas.length / itemInPage) <= 0

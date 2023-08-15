@@ -7,7 +7,7 @@ const initialState: IFilterSliceState = {
   currentPage: 0,
   sort: {
     name: "Rating (ASC)",
-    sortProperty: ESortProperty.PRICE_ASC,
+    sortProperty: ESortProperty.RATING_ASC,
   },
 };
 

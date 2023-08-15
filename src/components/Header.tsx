@@ -33,7 +33,7 @@ function Header() {
             <p>The most delicious pizza in the universe</p>
           </div>
         </Link>
-        {!(location.pathname === "/cart") && <Search />}{" "}
+        {!(location.pathname === "/cart") && <Search />}
         <Link to="/cart" className="header__cart-section cart-section">
           <span>{totalPrice} $</span>
           <div className="cart-section__vl" />
