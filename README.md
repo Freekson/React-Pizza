@@ -17,6 +17,9 @@
 <details>
   <summary>Table of Contents</summary>
   <ol>
+   <li>
+      <a href="#about-the-project">About The Project</a>
+    </li>
     <li><a href="#stack">Stack</a></li>  
     <li><a href="#preview">Preview</a></li> 
     <li><a href="#instalation">Installation</a></li>
@@ -25,6 +28,20 @@
 </details>
 
 <!-- ABOUT THE PROJECT -->
+
+# About The Project
+
+### Welcome to the React Pizza!
+
+This is a small-scale project that showcases the implementation of a pizza ordering platform using React and TypeScript.
+
+### Key Features
+
+**Technologies Used**: React, TypeScript, Redux-toolkit  
+**Data Handling**: Utilizes JSON-server to simulate API requests for pizza data.  
+**Dynamic Filtering**: Implements dynamic pizza filtering based on various attributes.  
+**URL Persistence**: Demonstrates the process of maintaining filter states in the URL.  
+**Shopping Cart**: Incorporates a shopping cart system for adding selected pizzas.
 
 <div id="stack"></div>
 
