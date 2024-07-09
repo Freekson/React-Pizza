@@ -2,7 +2,7 @@
   "pizzas": [
     {
       "id": 0,
-      "imageUrl": "https://dodopizza.azureedge.net/static/Img/Products/f035c7f46c0844069722f2bb3ee9f113_584x584.jpeg",
+      "imageUrl": "https://media.dodostatic.net/image/r:292x292/11EE8739E55F5BCE89E33C950E9F9698.avif",
       "title": "Pepperoni Fresh with peppers",
       "types": [0, 1],
       "sizes": [26, 30, 40],
@@ -12,7 +12,7 @@
     },
     {
       "id": 1,
-      "imageUrl": "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/2ffc31bb-132c-4c99-b894-53f7107a1441.jpg",
+      "imageUrl": "https://media.dodostatic.net/image/r:292x292/11EE873ED9C21CE2A2D71C0FEE8462CB.avif",
       "title": "Cheesy",
       "types": [0],
       "sizes": [26, 40],
@@ -22,7 +22,7 @@
     },
     {
       "id": 2,
-      "imageUrl": "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/6652fec1-04df-49d8-8744-232f1032c44b.jpg",
+      "imageUrl": "https://media.dodostatic.net/image/r:292x292/11EE873F263F7636BFE49EDBBCCD581D.avif",
       "title": "Barbecue chicken",
       "types": [0],
       "sizes": [26, 40],
@@ -32,8 +32,8 @@
     },
     {
       "id": 3,
-      "imageUrl": "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/af553bf5-3887-4501-b88e-8f0f55229429.jpg",
-      "title": "Sweet and sour chicken.",
+      "imageUrl": "https://media.dodostatic.net/image/r:292x292/11EEC3FF027DFA6ABB2C2582C8686D17.avif",
+      "title": "Meat",
       "types": [1],
       "sizes": [26, 30, 40],
       "price": 27,
@@ -42,8 +42,8 @@
     },
     {
       "id": 4,
-      "imageUrl": "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/b750f576-4a83-48e6-a283-5a8efb68c35d.jpg",
-      "title": "Cheeseburger pizza",
+      "imageUrl": "https://media.dodostatic.net/image/r:292x292/11EEC402C437E02DB8AFE46BF0FFDE87.avif",
+      "title": "VageMix",
       "types": [0, 1],
       "sizes": [26, 30, 40],
       "price": 41,
@@ -52,17 +52,17 @@
     },
     {
       "id": 5,
-      "imageUrl": "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/1e1a6e80-b3ba-4a44-b6b9-beae5b1fbf27.jpg",
-      "title": "Crazy pepperoni",
+      "imageUrl": "https://media.dodostatic.net/image/r:292x292/11EEC3FE719B6754938723F960B71F07.avif",
+      "title": "Pepperoni Hot",
       "types": [0],
       "sizes": [30, 40],
       "price": 50,
-      "category": 5,
+      "category": 4,
       "rating": 4
     },
     {
       "id": 6,
-      "imageUrl": "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/d2e337e9-e07a-4199-9cc1-501cc44cb8f8.jpg",
+      "imageUrl": "https://media.dodostatic.net/image/r:292x292/11EE873ACF835DF68769647F2ECA2F2A.avif",
       "title": "Pepperoni",
       "types": [0, 1],
       "sizes": [26, 30, 40],
@@ -72,8 +72,8 @@
     },
     {
       "id": 7,
-      "imageUrl": "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/d48003cd-902c-420d-9f28-92d9dc5f73b4.jpg",
-      "title": "Margarita",
+      "imageUrl": "https://media.dodostatic.net/image/r:292x292/11EEC402582C10E6908EBFFC185A9CA3.avif",
+      "title": "Pizza Caesar",
       "types": [0, 1],
       "sizes": [26, 30, 40],
       "price": 45,
@@ -82,7 +82,7 @@
     },
     {
       "id": 8,
-      "imageUrl": "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/ec29465e-606b-4a04-a03e-da3940d37e0e.jpg",
+      "imageUrl": "https://media.dodostatic.net/image/r:584x584/11EEC406246D8163915996B91E043453.avif",
       "title": "Four seasons",
       "types": [0, 1],
       "sizes": [26, 30, 40],
@@ -92,8 +92,8 @@
     },
     {
       "id": 9,
-      "imageUrl": "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/30367198-f3bd-44ed-9314-6f717960da07.jpg",
-      "title": "Vegetables and mushrooms 🌱",
+      "imageUrl": "https://media.dodostatic.net/image/r:292x292/11EEC402222096ED995052422450F685.avif",
+      "title": "Cream mushrooms 🌱",
       "types": [0, 1],
       "sizes": [26, 30, 40],
       "price": 28,
@@ -103,7 +103,7 @@
     {
       "id": 10,
       "imageUrl": "https://dodopizza-a.akamaihd.net/static/Img/Products/ddadb2bd7f2d40459acddbe2f51a2389_366x366.webp",
-      "title": "Double chiken ",
+      "title": "Double chicken",
       "types": [0, 1],
       "sizes": [26, 40],
       "price": 24,
